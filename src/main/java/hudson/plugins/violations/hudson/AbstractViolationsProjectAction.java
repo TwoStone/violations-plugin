@@ -60,7 +60,7 @@ public abstract class AbstractViolationsProjectAction
      * @return "Violations".
      */
     public String getDisplayName() {
-        return "Violations";
+        return MagicNames.PLUGIN_NAME;
     }
     /**
      * Get the target of the StaplerProxy for url violations.

@@ -13,6 +13,7 @@ import org.jenkinsci.plugins.codehealth.model.Priority;
 import org.jenkinsci.plugins.codehealth.provider.issues.Issue;
 import org.jenkinsci.plugins.codehealth.provider.issues.IssueProvider;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.io.IOException;
 import java.util.*;
@@ -99,6 +100,12 @@ public class ViolationsIssueProvider extends IssueProvider {
     @Override
     public String getOrigin() {
         return MagicNames.VIOLATIONS;
+    }
+
+    @Nonnull
+    @Override
+    public String getOriginPluginName() {
+        return MagicNames.PLUGIN_NAME;
     }
 
     @Override

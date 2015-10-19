@@ -13,6 +13,8 @@ public final class MagicNames {
     /** The dir name to use to generate violation reports into */
     public static final String VIOLATIONS = "violations";
 
+    public static final String PLUGIN_NAME = "Violations";
+
     /** The 16x16 violations icon */
     public static final String ICON_16
         = PLUGIN_HOME + "/images/16x16/" + ICON_NAME;

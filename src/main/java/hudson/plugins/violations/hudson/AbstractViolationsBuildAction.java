@@ -105,7 +105,7 @@ public abstract class AbstractViolationsBuildAction<T extends AbstractViolations
      */
     @Override
     public String getDisplayName() {
-        return "Violations";
+        return MagicNames.PLUGIN_NAME;
     }
 
     // -------------------------------------------
