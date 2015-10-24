@@ -9,7 +9,7 @@ import hudson.plugins.violations.model.FileModel;
 import hudson.plugins.violations.model.Violation;
 import hudson.plugins.violations.render.FileModelProxy;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.jenkinsci.plugins.codehealth.model.Priority;
+import org.jenkinsci.plugins.codehealth.provider.Priority;
 import org.jenkinsci.plugins.codehealth.provider.issues.Issue;
 import org.jenkinsci.plugins.codehealth.provider.issues.IssueProvider;
 
