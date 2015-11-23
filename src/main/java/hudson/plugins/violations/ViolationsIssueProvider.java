@@ -1,8 +1,7 @@
 package hudson.plugins.violations;
 
 import hudson.Extension;
-import hudson.model.AbstractBuild;
-import hudson.model.Action;
+import hudson.model.Run;
 import hudson.plugins.analysis.util.ContextHashCode;
 import hudson.plugins.violations.hudson.AbstractViolationsBuildAction;
 import hudson.plugins.violations.model.FileModel;
@@ -29,9 +28,9 @@ public class ViolationsIssueProvider extends IssueProvider {
     private ContextHashCode contextHasher = new ContextHashCode();
 
     @Override
-    public Collection<Issue> getExistingIssues(AbstractBuild<?, ?> build) {
+    public Collection<Issue> getExistingIssues(Run<?, ?> run) {
         final Collection<Issue> issues = new ArrayList<Issue>();
-        AbstractViolationsBuildAction violationAction = getViolationsBuildAction(build);
+        AbstractViolationsBuildAction violationAction = getViolationsBuildAction(run);
         if (violationAction != null) {
             ViolationsReport report = violationAction.findReport();
             Map<String, FileModelProxy> fileModelMap = report.getModel().getFileModelMap();
@@ -81,19 +80,12 @@ public class ViolationsIssueProvider extends IssueProvider {
         return builder.toHashCode();
     }
 
-    private AbstractViolationsBuildAction getViolationsBuildAction(AbstractBuild<?, ?> build) {
-        AbstractViolationsBuildAction violationAction = null;
-        for (Action action : build.getPersistentActions()) {
-            if (action instanceof AbstractViolationsBuildAction) {
-                violationAction = (AbstractViolationsBuildAction) action;
-                break;
-            }
-        }
-        return violationAction;
+    private AbstractViolationsBuildAction getViolationsBuildAction(Run<?, ?> run) {
+        return run.getAction(ViolationsBuildAction.class);
     }
 
     @Override
-    public Collection<Issue> getFixedIssues(AbstractBuild<?, ?> build) {
+    public Collection<Issue> getFixedIssues(Run<?, ?> run) {
         return null;
     }
 
