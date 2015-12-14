@@ -3,13 +3,13 @@ package hudson.plugins.violations;
 import hudson.Extension;
 import hudson.model.AbstractBuild;
 import hudson.model.Action;
-import hudson.plugins.analysis.util.ContextHashCode;
 import hudson.plugins.violations.hudson.AbstractViolationsBuildAction;
 import hudson.plugins.violations.model.FileModel;
 import hudson.plugins.violations.model.Violation;
 import hudson.plugins.violations.render.FileModelProxy;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.jenkinsci.plugins.codehealth.provider.Priority;
+import org.jenkinsci.plugins.codehealth.provider.issues.ContextHashCode;
 import org.jenkinsci.plugins.codehealth.provider.issues.Issue;
 import org.jenkinsci.plugins.codehealth.provider.issues.IssueProvider;
 
@@ -26,7 +26,7 @@ import java.util.*;
 @Extension
 public class ViolationsIssueProvider extends IssueProvider {
 
-    private ContextHashCode contextHasher = new ContextHashCode();
+    final ContextHashCode contextHasher = new ContextHashCode();
 
     @Override
     public Collection<Issue> getExistingIssues(AbstractBuild<?, ?> build) {
