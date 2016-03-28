@@ -29,7 +29,7 @@ public class ViolationsIssueProvider extends IssueProvider {
     final ContextHashCode contextHasher = new ContextHashCode();
 
     @Override
-    public Collection<Issue> getExistingIssues(AbstractBuild<?, ?> build) {
+    public Collection<Issue> getIssues(AbstractBuild<?, ?> build) {
         final Collection<Issue> issues = new ArrayList<Issue>();
         AbstractViolationsBuildAction violationAction = getViolationsBuildAction(build);
         if (violationAction != null) {
@@ -93,11 +93,6 @@ public class ViolationsIssueProvider extends IssueProvider {
     }
 
     @Override
-    public Collection<Issue> getFixedIssues(AbstractBuild<?, ?> build) {
-        return null;
-    }
-
-    @Override
     public String getOrigin() {
         return MagicNames.VIOLATIONS;
     }
@@ -106,11 +101,6 @@ public class ViolationsIssueProvider extends IssueProvider {
     @Override
     public String getOriginPluginName() {
         return MagicNames.PLUGIN_NAME;
-    }
-
-    @Override
-    public boolean canProvideFixedIssues() {
-        return false;
     }
 
     @Nullable
